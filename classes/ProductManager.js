@@ -8,9 +8,9 @@ export default class ProductManager {
         if (!title || !description || !price || !thumbnail || !code || !stock) {
            console.log("Please fill out all the required fields");
         }
-        const isCodeUsed = this.products.some(product => product.code === code);
-        if (isCodeUsed) {
-            console.log("ID code is already in use");
+        const codeValidation = this.products.some(product => product.code === code);
+        if (codeValidation) {
+            console.log("ID code is already used");
         }
         const newProduct = {
             id: this.currentProductId,
@@ -38,5 +38,4 @@ export default class ProductManager {
         console.log("Product not found");
               }
           }
-
 }
