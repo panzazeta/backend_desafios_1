@@ -31,8 +31,8 @@ export default class ProductManager {
     }
  
  getProductById(id) {
-    const product = this.products.filter(prod => prod.code === id);
-    if(product != ""){
+    const product = this.products.find(prod => prod.code === id);
+    if(product){
         return product;
         }else{
         console.log("Product not found");
