@@ -6,12 +6,12 @@ export default class Product {
         this.thumbnail = thumbnail;
         this.code = code; 
         this.stock = stock;
-        this.id = Product.incrementID()
+        this.id = Product.incrementId()
     }
 
     static incrementId() {
         if(this.idIncrement) {
-            this.idIncrement++;
+            this.idIncrement++
         } else {
             this.idIncrement = 1;
         }

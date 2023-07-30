@@ -4,6 +4,11 @@ export default class ProductManager {
     }
 
     addProduct(product) {
+        if (!product.title || !product.description || !product.price 
+            || !product.thumbnail || !product.code || !product.stock) {
+            console.log("Please fill out all the required fields");
+            return;
+        }
       const prod =  this.products.find(prod => prod.code === product.code)
         if (prod) {
             console.log("The product is already in use")
