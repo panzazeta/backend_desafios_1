@@ -5,6 +5,16 @@ export default class Product {
         this.price = price;
         this.thumbnail = thumbnail;
         this.code = code; 
-        this.stock = stock 
+        this.stock = stock;
+        this.id = Product.incrementID()
+    }
+
+    static incrementId() {
+        if(this.idIncrement) {
+            this.idIncrement++;
+        } else {
+            this.idIncrement = 1;
+        }
+        return this.idIncrement
     }
 }
