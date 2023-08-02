@@ -17,14 +17,20 @@ export default class ProductManager {
             console.log("The product is already in use")
         } else {
             this.products.push(product);
-            fs.writeFile(this.path, JSON.stringify(this.products));
+            fs.writeFile(this.path, JSON.stringify(this.products, null, 2));
         }
     }
 
- getProducts() {
-    console.log(this.products);
+    async getProducts() {
+        try {
+            const productsStored = await fs.readFile(this.path, "utf-8");
+            this.products = JSON.parse(productsStored);
+            console.log(this.products);
+        } catch (error) {
+            console.error("Cannot acces to the products stored:", error);
+        }
     }
- 
+
  getProductById(id) {
     const prod = this.products.find(prod => prod.id === id);
         if(prod) {
