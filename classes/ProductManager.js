@@ -1,6 +1,9 @@
+import { promises as fs } from "fs";
+
 export default class ProductManager {
     constructor(){
         this.products = [];
+        this.path = "./data.txt"
     }
 
     addProduct(product) {
@@ -14,6 +17,7 @@ export default class ProductManager {
             console.log("The product is already in use")
         } else {
             this.products.push(product);
+            fs.writeFile(this.path, JSON.stringify(this.products));
         }
     }
 
