@@ -6,7 +6,7 @@ export default class ProductManager {
         this.path = "./data.txt"
     }
 
-    addProduct(product) {
+    async addProduct(product) {
         if (!product.title || !product.description || !product.price 
             || !product.thumbnail || !product.code || !product.stock) {
             console.log("Please fill out all the required fields");
@@ -17,7 +17,7 @@ export default class ProductManager {
             console.log("The product is already in use")
         } else {
             this.products.push(product);
-            fs.writeFile(this.path, JSON.stringify(this.products, null, 2));
+           await fs.writeFile(this.path, JSON.stringify(this.products, null, 2));
         }
     }
 
@@ -31,12 +31,17 @@ export default class ProductManager {
         }
     }
 
- getProductById(id) {
-    const prod = this.products.find(prod => prod.id === id);
-        if(prod) {
-            console.log(prod)
-        } else {
-            console.log("Product not found")
-             }
-        }
+    getProductById(id) {
+        const prod = this.products.find(prod => prod.id === id);
+            if(prod) {
+                console.log(prod)
+            } else {
+                console.log("Product not found")
+                }
+            }
+
+    deleteProduct(id) {
+
+ }
+
 }

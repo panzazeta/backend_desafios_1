@@ -7,10 +7,10 @@ const product3 = new Product("producto prueba 3","Este es un producto prueba 3",
 
 const productManager = new ProductManager();
 
-// productManager.addProduct(product1);
-// productManager.addProduct(product2);
-// productManager.addProduct(product3);
+productManager.addProduct(product1);
+productManager.addProduct(product2);
+productManager.addProduct(product3);
 
-productManager.getProducts();
+// productManager.getProducts();
 // productManager.getProductById(2);
 
