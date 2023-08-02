@@ -27,21 +27,19 @@ export default class ProductManager {
             this.products = JSON.parse(productsStored);
             console.log(this.products);
         } catch (error) {
-            console.error("Cannot acces to the products stored:", error);
+            console.error("Cannot access to the products stored:", error);
         }
     }
 
-    getProductById(id) {
-        const prod = this.products.find(prod => prod.id === id);
+   async getProductById(id) {
+         const content = await fs.readFile(this.path, "utf-8");
+         this.products = JSON.parse(content);
+         const prod = this.products.find(product => product.id === id);
             if(prod) {
                 console.log(prod)
             } else {
                 console.log("Product not found")
                 }
             }
-
-    deleteProduct(id) {
-
- }
 
 }
