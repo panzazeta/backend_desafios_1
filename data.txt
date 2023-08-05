@@ -16,14 +16,5 @@
     "code": "abc123b",
     "stock": 26,
     "id": 2
-  },
-  {
-    "title": "producto prueba 3",
-    "description": "Este es un producto prueba 3",
-    "price": 400,
-    "thumbnail": "Sin imagen",
-    "code": "abc123c",
-    "stock": 27,
-    "id": 3
   }
 ]
