@@ -8,7 +8,7 @@ const product4 = new Product("producto prueba 4","Este es un producto prueba 4",
 const product5 = new Product("producto prueba 5","Este es un producto prueba 5", 600, "Sin imagen", "abc123e", 22 );
 const product6 = new Product("producto prueba 6","Este es un producto prueba 6", 700, "Sin imagen", "abc123f", 32 );
 
-const productManager = new ProductManager();
+// const productManager = new ProductManager("./data.txt");
 
 // productManager.addProduct(product1);
 // productManager.getProducts();

@@ -1,9 +1,9 @@
 import { promises as fs } from "fs";
 
 export default class ProductManager {
-    constructor(){
+    constructor(filePath){
         this.products = [];
-        this.path = "./data.txt"
+        this.path = filePath;
     }
 
     async addProduct(product) {
