@@ -1,5 +1,5 @@
-import ProductManager from "./src/classes/ProductManager.js";
-import Product from "./src/classes/Product.js";
+import ProductManager from "./classes/ProductManager.js";
+import Product from "./classes/Product.js";
 
 const product1 = new Product("producto prueba 1","Este es un producto prueba 1", 200, "Sin imagen", "abc123a", 25 );
 const product2 = new Product("producto prueba 2","Este es un producto prueba 2", 300, "Sin imagen", "abc123b", 26 );
