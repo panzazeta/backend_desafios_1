@@ -5,7 +5,7 @@
   "main": "main.js",
   "type": "module",
   "scripts": {
-    "dev": "node main.js"
+    "dev": "nodemon main.js"
   },
   "keywords": [],
   "author": "",
