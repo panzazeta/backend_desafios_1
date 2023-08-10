@@ -11,15 +11,8 @@ const product6 = new Product("producto prueba 6","Este es un producto prueba 6",
 const productManager = new ProductManager();
 
 // productManager.addProduct(product1);
-// productManager.addProduct(product2);
-// productManager.addProduct(product3);
-// productManager.addProduct(product4);
-// productManager.addProduct(product5);
-// productManager.addProduct(product6);
-
-productManager.getProducts();
+// productManager.getProducts();
 // productManager.getProductById(1);
-
 // productManager.updateProduct(1, {stock: "600"});
-
 // productManager.deleteProduct(3);
+
