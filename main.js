@@ -11,7 +11,7 @@ const productManager = new ProductManager();
 // productManager.addProduct(product2);
 // productManager.addProduct(product3);
 
-// productManager.getProducts();
+productManager.getProducts();
 // productManager.getProductById(1);
 
 // productManager.updateProduct(1, {stock: "600"});
