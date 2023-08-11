@@ -27,5 +27,5 @@ app.get("/products/:pid", async(req,res) => {
     if(productsPid)
         res.send(productsPid)
     else
-        res.send("Product not found")
+        res.send("Error: product not found")
 })
