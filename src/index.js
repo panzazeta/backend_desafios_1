@@ -1,0 +1,19 @@
+import express from "express";
+import ProductManager from "./classes/ProductManager.js";
+import Product from "./classes/Product.js";
+import prodsRouter from "./routes/products.routes.js";
+
+const PORT = 8080;
+const app = express();
+
+//Middlewares:
+app.use(express.json());
+app.use(express.urlencoded({ extended: true}));
+
+//Routes:
+app.use("/api/products", prodsRouter);
+
+app.listen(PORT, () => {
+    console.log(`Server on port:${PORT}`)
+});
+
