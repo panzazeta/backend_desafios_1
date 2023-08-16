@@ -43,6 +43,17 @@ export default class ProductManager {
                 }
             }
     
+   async getProductByCode(code) {
+         const content = await fs.readFile(this.path, "utf-8");
+         this.products = JSON.parse(content);
+         const prod = this.products.find(product => product.code === code);
+            if(prod) {
+                console.log(prod)
+            } else {
+                console.log("Product not found")
+                }
+            }
+
    async updateProduct (id, product) {
         const content = await fs.readFile(this.path, "utf-8");
         this.products = JSON.parse(content);

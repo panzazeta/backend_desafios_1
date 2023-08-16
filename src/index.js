@@ -12,6 +12,7 @@ app.use(express.urlencoded({ extended: true}));
 
 //Routes:
 app.use("/api/products", prodsRouter);
+// app.use("api/carts", cartsRouter);
 
 app.listen(PORT, () => {
     console.log(`Server on port:${PORT}`)

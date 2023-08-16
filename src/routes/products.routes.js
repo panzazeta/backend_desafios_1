@@ -19,9 +19,28 @@ prodsRouter.get("/:pid", async(req,res) => {
     const products= await productManager.getProducts();
     const productsPid = products.find(prod => prod.id === parseInt(req.params.pid));
     if(productsPid)
-        res.send(productsPid)
+        res.status(200).send(productsPid)
     else
-        res.send("Error: product not found")
+        res.status(404).send("Error: product not found")
+})
+
+prodsRouter.post("/", async (req,res) => {
+    const {code} = req.body;
+    const confirmation = await productManager.getProductByCode(code)
+    if (confirmation) {
+        res.status(400).send("Product already created")
+    } else {
+        const conf = await productManager.addProduct(req.body)
+        if(conf) 
+            res.status(200).send("Product has been created")
+    }
+})
+
+prodsRouter.put("/", async (req,res) => {
+
+
+
+    
 })
 
 export default prodsRouter;
