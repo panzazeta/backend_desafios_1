@@ -30,7 +30,7 @@ prodsRouter.post("/", async (req,res) => {
     if (confirmation) {
         res.status(400).send("Product already created")
     } else {
-        const conf = await productManager.addProduct(req.body)
+        const conf = await productManager.addProduct(req.body);
         if(conf) 
             res.status(200).send("Product has been created")
     }
