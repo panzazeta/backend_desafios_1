@@ -36,11 +36,26 @@ prodsRouter.post("/", async (req,res) => {
     }
 })
 
-prodsRouter.put("/", async (req,res) => {
+prodsRouter.put("/:id", async (req,res) => {
+    const {id} = req.params;
+    const confirmation = await productManager.getProductById(parseInt(id));
+    if (confirmation) {
+        await productManager.updateProduct(parseInt(id), req.body);
+        res.status(200).send("Product has been updated")
+    } else {
+        res.status(404).send("Product not found")  
+    }
+})
 
-
-
-    
+prodsRouter.delete("/:id", async (req,res) => {
+    const {id} = req.params;
+    const confirmation = await productManager.getProductById(parseInt(id), req.body);
+    if (confirmation) {
+        await productManager.deleteProductProduct(parseInt(id));
+        res.status(200).send("Product has been updated")
+    } else {
+        res.status(404).send("Product not found")  
+    }
 })
 
 export default prodsRouter;
