@@ -26,7 +26,6 @@ export default class ProductManager {
             const productsStored = await fs.readFile(this.path, "utf-8");
             this.products = JSON.parse(productsStored);
             return this.products;
-            // console.log(this.products);
         } catch (error) {
             console.error("Cannot access to the products stored:", error);
         }
