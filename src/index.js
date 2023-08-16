@@ -1,6 +1,6 @@
 import express from "express";
-import ProductManager from "./classes/ProductManager.js";
-import Product from "./classes/Product.js";
+// import ProductManager from "../ProductManager.js";
+// import Product from "./classes/Product.js";
 import prodsRouter from "./routes/products.routes.js";
 
 const PORT = 8080;
