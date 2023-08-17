@@ -1,5 +1,6 @@
 import {Router} from "express";
 import ProductManager from "../classes/ProductManager.js";
+import Product from "../classes/Product.js";
 
 
 const productManager = new ProductManager("./products.txt")
@@ -27,8 +28,8 @@ prodsRouter.get("/:pid", async(req,res) => {
 
 prodsRouter.post("/", async (req,res) => {
     const {code} = req.body;
-    const conf = await productManager.getProductByCode(code)
-    if (conf) {
+    const confirmation = await productManager.getProductByCode(code)
+    if (confirmation) {
         res.status(400).send("Product already created")
     } else {
         const conf = await productManager.addProduct(req.body);
@@ -39,8 +40,8 @@ prodsRouter.post("/", async (req,res) => {
 
 prodsRouter.put("/:id", async (req,res) => {
     const {id} = req.params;
-    const confirmation = await productManager.getProductById(parseInt(req.params.id));
-    if (confirmation) {
+    const conf = await productManager.getProductById(parseInt(id));
+    if (conf) {
         await productManager.updateProduct(parseInt(id), req.body);
         res.status(200).send("Product has been updated")
     } else {
