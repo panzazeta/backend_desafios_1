@@ -26,8 +26,8 @@ prodsRouter.get("/:pid", async(req,res) => {
 
 prodsRouter.post("/", async (req,res) => {
     const {code} = req.body;
-    const confirmation = await productManager.getProductByCode(code)
-    if (confirmation) {
+    const conf = await productManager.getProductByCode(code)
+    if (conf) {
         res.status(400).send("Product already created")
     } else {
         const conf = await productManager.addProduct(req.body);
@@ -38,7 +38,7 @@ prodsRouter.post("/", async (req,res) => {
 
 prodsRouter.put("/:id", async (req,res) => {
     const {id} = req.params;
-    const confirmation = await productManager.getProductById(parseInt(id));
+    const confirmation = await productManager.getProductById(parseInt(req.params.id));
     if (confirmation) {
         await productManager.updateProduct(parseInt(id), req.body);
         res.status(200).send("Product has been updated")
@@ -49,9 +49,9 @@ prodsRouter.put("/:id", async (req,res) => {
 
 prodsRouter.delete("/:id", async (req,res) => {
     const {id} = req.params;
-    const confirmation = await productManager.getProductById(parseInt(id), req.body);
-    if (confirmation) {
-        await productManager.deleteProductProduct(parseInt(id));
+    const conf = await productManager.getProductById(parseInt(req.params.id));
+    if (conf) {
+        await productManager.deleteProduct(parseInt(id));
         res.status(200).send("Product has been updated")
     } else {
         res.status(404).send("Product not found")  
