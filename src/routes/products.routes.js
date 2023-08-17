@@ -1,6 +1,7 @@
 import {Router} from "express";
 import ProductManager from "../classes/ProductManager.js";
 
+
 const productManager = new ProductManager("./products.txt")
 const prodsRouter = Router();
 
@@ -49,7 +50,7 @@ prodsRouter.put("/:id", async (req,res) => {
 
 prodsRouter.delete("/:id", async (req,res) => {
     const {id} = req.params;
-    const conf = await productManager.getProductById(parseInt(req.params.id));
+    const conf = await productManager.getProductById(parseInt(id));
     if (conf) {
         await productManager.deleteProduct(parseInt(id));
         res.status(200).send("Product has been updated")

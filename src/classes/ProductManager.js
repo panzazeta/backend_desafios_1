@@ -36,7 +36,7 @@ export default class ProductManager {
          this.products = JSON.parse(content);
          const prod = this.products.find(product => product.id === id);
             if(prod) {
-                console.log(prod)
+                return prod;
             } else {
                 console.log("Product not found")
                 }
