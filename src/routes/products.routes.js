@@ -1,7 +1,5 @@
 import {Router} from "express";
 import ProductManager from "../classes/ProductManager.js";
-import Product from "../classes/Product.js";
-
 
 const productManager = new ProductManager("./products.txt")
 const prodsRouter = Router();
@@ -28,14 +26,17 @@ prodsRouter.get("/:pid", async(req,res) => {
 
 prodsRouter.post("/", async (req,res) => {
     const {code} = req.body;
-    const confirmation = await productManager.getProductByCode(code)
-    if (confirmation) {
+    const prods = await productManager.getProducts();
+    const prodsIds = prods.map(prod => prod.id);
+    req.body.id = Math.max(...prodsIds) +1;
+    const conf = prods.find(p => p.code === code);
+    if (conf) {
         res.status(400).send("Product already created")
     } else {
         const conf = await productManager.addProduct(req.body);
-        if(conf) 
+        if(conf) {
             res.status(200).send("Product has been created")
-    }
+    }}
 })
 
 prodsRouter.put("/:id", async (req,res) => {

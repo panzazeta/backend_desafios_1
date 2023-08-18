@@ -18,6 +18,7 @@ export default class ProductManager {
         } else {
             this.products.push(product);
             await fs.writeFile(this.path, JSON.stringify(this.products, null, 2));
+            return product;
         }
     }
 
@@ -36,7 +37,7 @@ export default class ProductManager {
          this.products = JSON.parse(content);
          const prod = this.products.find(product => product.id === id);
             if(prod) {
-                return prod;
+                return prod
             } else {
                 console.log("Product not found")
                 }
