@@ -16,10 +16,10 @@ class Cart {
     }
 }
 
-class CartManager {
-    constructor() {
-        this.path = './src/carts.txt';
-        this.nextId = 0;
+export default class CartManager {
+    constructor(filePath) {
+        this.path = filePath;
+        this.nextId = 1;
         this.carts = []
     }
 
@@ -29,6 +29,14 @@ class CartManager {
         } catch (error) {
             console.error("Error at saving cart:", error);
         }
+    }
+
+    createCart = async() => {
+        await this.getAllCarts();
+        const newCart = new Cart(this.nextId);
+        this.carts.push(newCart);
+        this.saveToFile();
+        return newCart;
     }
 
     getAllCarts = async() => {
@@ -49,15 +57,7 @@ class CartManager {
             }
         }
     }
-
-    createCart = async() => {
-        await this.getAllCarts();
-        const newCart = new Cart(this.nextId);
-        this.carts.push(newCart);
-        this.saveToFile();
-        return newCart;
-    }
-
+  
     getCartById = async(id) => {
         await this.getAllCarts();
         const cart = this.carts.find(cart => cart.id === id);
@@ -81,5 +81,3 @@ class CartManager {
         }
     }
 }
-
-export const cartManager = new CartManager();

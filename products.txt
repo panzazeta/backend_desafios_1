@@ -70,5 +70,14 @@
     "code": "abcsdfsdfsddsfs3c",
     "stock": 27,
     "id": 10
+  },
+  {
+    "title": "producto prueba 23423432423",
+    "description": "Este es un producto prueba 3",
+    "price": 400333,
+    "thumbnail": "Sin imagen",
+    "code": "abcsdfsdfsddsdafdfsffs3c",
+    "stock": 27,
+    "id": 11
   }
 ]
