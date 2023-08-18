@@ -66,9 +66,8 @@ export default class CartManager {
                 products[existingProductIndex].quantity++;
             } else {
                 products.push({ product: parseInt(productId), quantity: 1 });
-                console.log(`Product added to cart ${productId}`);
             }
-            
+            console.log(`Product ID: ${productId} added to Cart: ${cartId}`);
             await this.saveToFile();
         }
     }
