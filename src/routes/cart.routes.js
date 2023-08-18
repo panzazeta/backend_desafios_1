@@ -13,8 +13,8 @@ cartsRouter.get("/", async (req, res) => {
     res.send( await cartManager.getAllCarts());
 })
 
-cartsRouter.get("/:id", async (req, res) => {
-    res.send( await cartManager.getCartById(req.params.id));
+cartsRouter.get("/:pid", async (req, res) => {
+    res.send( await cartManager.getCartById(req.params.pid));
 })
 
 cartsRouter.post("/:cid/product/:pid", async (req, res) => {

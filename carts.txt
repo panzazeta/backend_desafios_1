@@ -1,9 +1,5 @@
 [
   {
-    "id": 0,
-    "products": []
-  },
-  {
     "id": 1,
     "products": []
   },

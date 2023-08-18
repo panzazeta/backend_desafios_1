@@ -45,11 +45,13 @@ export default class CartManager {
   
     getCartById = async(id) => {
         await this.getAllCarts();
-        const cart = this.carts.find(cart => cart.id === id);
+        const cart = this.carts.find(cart => cart.id === parseInt(id));
+        console.log(cart);
         if (cart) {
             return cart;
         } else {
             console.log('Cart not found');
+            return null;
         }
     }
 
