@@ -54,16 +54,23 @@ export default class CartManager {
         }
     }
 
-    addProductToCart = async(cartId, productId) => {
-        const cartData = await this.getCartById(cartId);
-        if(!cartData) {
+    addProductToCart = async (cartId, productId) => {
+        const cartContent = await this.getCartById(cartId);
+        if (!cartContent) {
             throw new Error('Cart not found');
         } else {
-        const { id, products } = cartData; 
-        const cart = new Cart(id); 
-        cart.products = [...products];
-        cart.addProduct(productId);
-        await this.saveToFile();
+            const { products } = cartContent;
+            const existingProductIndex = products.findIndex(p => p.product === parseInt(productId));
+            
+            if (existingProductIndex !== -1) {
+                products[existingProductIndex].quantity++;
+            } else {
+                products.push({ product: parseInt(productId), quantity: 1 });
+                console.log(`Product added to cart ${productId}`);
+            }
+            
+            await this.saveToFile();
         }
     }
+
 }
