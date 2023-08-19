@@ -6,7 +6,7 @@ const cartManager = new CartManager("./carts.txt");
 
 cartsRouter.post("/", async (req, res) => {
     await cartManager.createCart();
-    res.send("New cart created");
+    res.status(200).send("New cart created");
 })
 
 cartsRouter.get("/", async (req, res) => {
@@ -14,11 +14,19 @@ cartsRouter.get("/", async (req, res) => {
 })
 
 cartsRouter.get("/:pid", async (req, res) => {
-    res.send( await cartManager.getCartById(req.params.pid));
-})
+    const cart = await cartManager.getCartById(req.params.pid);
+    if (cart) {
+        res.status(200).send(cart.products);
+    } else {
+        res.status(404).send("Cart not found");
+    }
+});
+
 
 cartsRouter.post("/:cid/product/:pid", async (req, res) => {
-    res.send( await cartManager.addProductToCart(req.params.cid,req.params.pid));
-})
+    await cartManager.addProductToCart(req.params.cid, req.params.pid);
+    res.status(200).send("Product added to cart");
+});
+
 
 export default cartsRouter
