@@ -23,7 +23,7 @@
     "price": 600,
     "thumbnail": "Sin imagen",
     "code": "abc123e",
-    "stock": 22,
+    "stock": 2333332,
     "id": 5
   },
   {
