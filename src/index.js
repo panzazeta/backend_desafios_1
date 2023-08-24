@@ -32,7 +32,9 @@ const upload = multer({storage: storage});
 app.use("/api/products", prodsRouter);
 app.use("/api/carts", cartsRouter);
 app.get("/static", (req, res) => {
-    res.render("home") 
+    res.render("home", {
+        nombre: "lucas"
+    }) 
 });    
 // console.log(__dirname + "/public");
 // console.log(path.join(__dirname, "/public"));
