@@ -1,9 +1,10 @@
 import express from "express";
 import multer from "multer";
+import path from "path";
 import prodsRouter from "./routes/products.routes.js";
 import cartsRouter from "./routes/cart.routes.js"
+import { engine } from "express-handlebars";
 import { __dirname } from "./path.js";
-import path from "path";
 
 const app = express();
 const PORT = 8080;
@@ -21,13 +22,18 @@ const storage = multer.diskStorage({
 //Middlewares:
 app.use(express.json());
 app.use(express.urlencoded({ extended: true}));
+app.engine("handlebars", engine());
+app.set("view engine", "handlebars");
+app.set("views", path.resolve(__dirname, "./views"));
+app.use("/static", express.static(path.join(__dirname, "/public")));
 const upload = multer({storage: storage});
 
 //Routes:
 app.use("/api/products", prodsRouter);
 app.use("/api/carts", cartsRouter);
-app.use("/static", express.static(path.join(__dirname, "/public")));
-
+app.get("/static", (req, res) => {
+    res.render("home") 
+});    
 // console.log(__dirname + "/public");
 // console.log(path.join(__dirname, "/public"));
 
